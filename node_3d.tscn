@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcc01g5h7lnwy"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_xnfw7"]
+[ext_resource type="Texture2D" uid="uid://cf8qekg2o6hux" path="res://Myrna.png" id="2_8ogts"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1mrdl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fpseq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_60o8w"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.966609, 0.256256, 0, -0.256256, 0.966609, 0.146813, 1.39273, 3.41009)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(5.815, 0, 0, 0, 5.815, 0, 0, 0, 5.815, 0, -2.509, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_1mrdl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_fpseq")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.652967, 2.26796)
+script = ExtResource("1_xnfw7")
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267615, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_8ogts")
+hframes = 31
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_60o8w")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.96238, 0)
+omni_range = 6.433
